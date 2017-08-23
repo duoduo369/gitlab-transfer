@@ -8,6 +8,7 @@ import urlparse
 
 GITLAB_HOST = ''  # something like https://www.xxx.com
 GITLAB_PRIVATE_TOKEN = ''  # /profile/account --> Private token
+GIT_REPO_FILE_PATH = '/tmp/gitlab_projects.txt'
 PER_PAGE = 50
 
 assert GITLAB_HOST, u'配置缺失'
@@ -79,7 +80,7 @@ def main():
         group_projects = get_group_projects(group_id)
         if group_projects:
             projects.extend(group_projects)
-    with open('/tmp/gitlab_projects.txt', 'w') as f:
+    with open(GIT_REPO_FILE_PATH, 'w') as f:
         f.write('\n'.join(projects))
 
 if __name__ == '__main__':
