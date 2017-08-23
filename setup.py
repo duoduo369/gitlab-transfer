@@ -3,7 +3,7 @@
 from os.path import join, dirname
 from setuptools import setup
 
-PACKAGE_NAME = ''
+PACKAGE_NAME = 'gitlab_transfer'
 PACKAGE_PATH = ''
 
 version = __import__(PACKAGE_PATH).__version__
