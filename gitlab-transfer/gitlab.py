@@ -18,9 +18,10 @@ assert GITLAB_PRIVATE_TOKEN, u'配置缺失'
 def get_groups(page):
     url = urlparse.urljoin(
             GITLAB_HOST,
-            '/api/v3/groups?private_token={}&all_available=1&per_page={}&page={}'.format(GITLAB_PRIVATE_TOKEN, PER_PAGE, page)
+            '/api/v4/groups?private_token={}&all_available=1&per_page={}&page={}'.format(GITLAB_PRIVATE_TOKEN, PER_PAGE, page)
     )
     r = requests.get(url)
+    print '[get_groups]', r.json()
     return r.json()
 
 
@@ -46,7 +47,7 @@ def get_all_groups():
 def get_one_page_data(group_id, page):
     url = urlparse.urljoin(
             GITLAB_HOST,
-            '/api/v3/groups/{}/projects?private_token={}&per_page={}&page={}'.format(group_id, GITLAB_PRIVATE_TOKEN, PER_PAGE, page)
+            '/api/v4/groups/{}/projects?private_token={}&per_page={}&page={}'.format(group_id, GITLAB_PRIVATE_TOKEN, PER_PAGE, page)
     )
     r = requests.get(url)
     return r.json()
